@@ -14,13 +14,13 @@ for i in range(len(data)):
     response = requests.put(BASE + "video/" + str(i), data[i])
     print(response.json())
 
-input()
+# input()
 
-response = requests.delete(BASE + "video/0")
-print(response)
+# response = requests.delete(BASE + "video/0")
+# print(response)
 
 # response2 = requests.put(BASE + "video/1", {"name": "SWAT", "views": 200, "likes": 10})
 # print(response2.json())
 input()
-response = requests.get(BASE + "video/2")
+response = requests.get(BASE + "video/20")
 print(response.json())
