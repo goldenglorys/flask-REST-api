@@ -1,5 +1,5 @@
 from flask import Flask
-from flask_restful import Api, Resource, reqparse
+from flask_restful import Api, Resource, reqparse, abort
 
 # Initializing and wrapping our app into an API
 app = Flask(__name__)
@@ -13,6 +13,11 @@ video_put_args.add_argument("likes", type=str, help="Likes of the video is requi
 videos = {}
 
 
+def abort_program(video_id):
+    if video_id not in videos:
+        abort(404, message="Video id is not valid...")
+
+
 class HelloWorld(Resource):
     def get(self):
         return {"data": "Posted"}
@@ -23,6 +28,7 @@ class HelloWorld(Resource):
 
 class Video(Resource):
     def get(self, video_id):
+        abort_program(video_id)
         return videos[video_id]
 
     def put(self, video_id):
